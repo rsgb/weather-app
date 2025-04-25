@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Using a Public API</title>
+    <link rel="stylesheet" type="text/css" href="styles/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div>
+        <h1>Open Weather API</h1>
+
+        <!---prettier-ignore-->
+        <% if (!weather) { %>
+        <h2>Type your location and get weather data</h2>
+        <!---prettier-ignore-->
+        <% } else {%>
+        <h2>Location: <%=city%>, <%=country%></h2>
+        <% } %>
+        <form action="/" method="POST" class="form">
+          <label for="cityInputField">Your city:</label>
+          <input type="text" id="cityInputField" name="city" />
+          <label for="countryInputField">Your country:</label>
+          <input type="text" id="countryInputField" name="country" />
+          <button type="submit" value="Submit">Submit</button>
+        </form>
+      </div>
+      <div>
+        <!---prettier-ignore-->
+        <% if (!weather) { %>
+        <!---prettier-ignore-->
+        <% } else {%>
+        <ul>
+          <li>Weather: <%=weather %></li>
+          <li>Weather description: <%=description %></li>
+          <li>Temperature: <%=temp%>ºC</li>
+        </ul>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>
