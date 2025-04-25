@@ -17,12 +17,15 @@
         <h1>Open Weather API</h1>
 
         <!---prettier-ignore-->
-        <% if (!weather) { %>
-        <h2>Type your location and get weather data</h2>
+        <% if (error) { %>
+        <h2><%= error %></h2>
         <!---prettier-ignore-->
-        <% } else {%>
+        <% } else if (!weather){%>
+        <h2>Type your location and get weather data</h2>
+        <% } else if (!error) {%>
         <h2>Location: <%=city%>, <%=country%></h2>
-        <% } %>
+        <!---prettier-ignore-->
+        <% }%>
         <form action="/" method="POST" class="form">
           <label for="cityInputField">Your city:</label>
           <input type="text" id="cityInputField" name="city" />

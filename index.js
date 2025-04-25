@@ -28,6 +28,7 @@ app.get("/", (req, res) => {
     temp: null,
     userCity: null,
     userCountry: null,
+    error: null,
   });
 });
 
@@ -60,9 +61,17 @@ app.post("/", async (req, res) => {
       temp: weatherTemp,
       country: userCountry,
       city: userCity,
+      error: null,
     });
   } catch (error) {
-    res.status(500).send("Internal Server Error");
+    res.render("index.ejs", {
+      weather: null,
+      description: null,
+      temp: null,
+      userCity: null,
+      userCountry: null,
+      error: "Insert a valid location",
+    });
   }
 });
 
